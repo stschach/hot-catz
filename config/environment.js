@@ -4,6 +4,14 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'hot-catz',
     environment,
+    firebase: {
+      apiKey: "AIzaSyCNBGltSjSfsY65YaP_6kNdpnMgWQOmnDY",
+      authDomain: "hot-catz-sts.firebaseapp.com",
+      databaseURL: "https://hot-catz-sts.firebaseio.com",
+      projectId: "hot-catz-sts",
+      storageBucket: "hot-catz-sts.appspot.com",
+      messagingSenderId: "607571272115"
+    },
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {
