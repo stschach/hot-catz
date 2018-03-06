@@ -1,0 +1,24 @@
+<div>
+  <h1>Hot Catz</h1>
+  <p><i>Vote for the cutest feline! Finally, we'll have the answer.</i></p>
+
+  <ul>
+    {{#each model as |cat|}}
+      <div class="cat-box">
+        <h3>{{cat.name}}</h3>
+        <p>
+          Rank: {{cat.rank}}<br />
+          Votes: {{cat.votes}}<br />
+          <img src='{{cat.imageUrl}}' alt='display error' class='image-icon' />
+        </p>
+        <div class="voting">
+          Vote for {{cat.name}}:
+          <button {{action 'removeVote' cat}}>-</button>
+          <button {{action 'addVote' cat}}>+</button>
+          {{computeRank}}
+        </div>
+      </div>
+    {{/each}}
+  </ul>
+
+</div>

@@ -5,12 +5,12 @@ module.exports = function(environment) {
     modulePrefix: 'hot-catz',
     environment,
     firebase: {
-      apiKey: "AIzaSyCNBGltSjSfsY65YaP_6kNdpnMgWQOmnDY",
-      authDomain: "hot-catz-sts.firebaseapp.com",
-      databaseURL: "https://hot-catz-sts.firebaseio.com",
-      projectId: "hot-catz-sts",
-      storageBucket: "hot-catz-sts.appspot.com",
-      messagingSenderId: "607571272115"
+      apiKey: "AIzaSyDEzFubLP5G__qUUrZR3hGsdNGksF6PjUM",
+      authDomain: "cat-voting.firebaseapp.com",
+      databaseURL: "https://cat-voting.firebaseio.com",
+      projectId: "cat-voting",
+      storageBucket: "cat-voting.appspot.com",
+      messagingSenderId: "391454378678"
     },
     rootURL: '/',
     locationType: 'auto',
@@ -33,10 +33,10 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+     ENV.APP.LOG_ACTIVE_GENERATION = true;
+     ENV.APP.LOG_TRANSITIONS = true;
+     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+     ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {
