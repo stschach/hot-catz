@@ -4,18 +4,18 @@
 
   <ul>
     {{#each model as |cat|}}
-      <div class="cat-box">
+      {{computeRank}}
+      <div class="cat-box" id='{{cat.rank}}'>
         <h3>{{cat.name}}</h3>
         <p>
           Rank: {{cat.rank}}<br />
           Votes: {{cat.votes}}<br />
-          <img src='{{cat.imageUrl}}' alt='display error' class='image-icon' />
+          <img {{action 'addVote' cat}} src='{{cat.imageUrl}}' alt='display error' class='image-icon' />
         </p>
-        <div class="voting">
+        <div class="vote-button">
           Vote for {{cat.name}}:
           <button {{action 'removeVote' cat}}>-</button>
           <button {{action 'addVote' cat}}>+</button>
-          {{computeRank}}
         </div>
       </div>
     {{/each}}
