@@ -4,10 +4,9 @@ import { set } from '@ember/object';
 import { computed } from '@ember/object';
 
 export default Controller.extend({
-  listOfVotes: mapBy('model', 'votes'), // array of 'votes' for each cat
+  listOfVotes: mapBy('model', 'votes'),
   totalCatz: alias('model.length'),
   computeRank: computed('model.@each.votes', function() {
-    // this computed property will be called for every 'votes' property change
     let catz = this.get('model');
     let voteList = this.get('listOfVotes');
     let numberOfCuterCats = 0;
@@ -23,7 +22,7 @@ export default Controller.extend({
       else {
         set(cat, 'rank', numberOfCuterCats+1);
       }
-      numberOfCuterCats = 0; // reset count for each cat
+      numberOfCuterCats = 0;
     })
     catz.save();
     return;

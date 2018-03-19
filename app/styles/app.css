@@ -1,5 +1,53 @@
 html {
-  background-color: whitesmoke;
+  background-color: #e9e9e9;
+  background-image: url("/images/texture.png");
+}
+#header-desc {
+  float: right;
+  margin-top: 34px;
+}
+#header-bar {
+  border-top: 1px solid #d5d5d5;
+}
+#footer-orange {
+  position: fixed;
+  left: 0px;
+  bottom: 50px;
+  height: 10px;
+  width: 100%;
+  background: #FF7000;
+  border: 1px solid #FF7000;
+  border-top-color: orange;
+  border-bottom-style: outset;
+  border-left-style: none;
+  border-right-style: none;
+}
+#footer-orange-background {
+  position: fixed;
+  left: 0px;
+  bottom: 49px;
+  height: 14px;
+  width: 100%;
+  background: #999;
+  background-image: url("/images/texture.png");
+}
+#footer-gray {
+   position: fixed;
+   left: 0px;
+   bottom: 0px;
+   height: 50px;
+   width: 100%;
+   background: #555;
+   background-image: url("/images/texture.png");
+}
+#logo-lift {
+  margin-bottom: 4px
+}
+.align-center {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+  margin-bottom: 50px;
 }
 .big-button {
   height: 100px;
@@ -25,5 +73,13 @@ html {
   padding: 5px;
 }
 .vote-button {
-  background-color: #fe8865;
+  background-color: #FF7000;
+}
+.pull-right {
+  float: right;
+  margin-right: 15%;
+}
+.pull-left {
+  float: left;
+  margin-left: 15%;
 }
