@@ -2,26 +2,45 @@
   <img src="/images/flameOrange.png" alt="flame" />
   <img id="logo-lift" src="/images/HOTCATZ.png" alt="logo" />
   <img id="header-desc" src="/images/headerDesc.png" alt="header desc" />
-  <img id="header-bar" src="/images/Layer 20 copy 5.png" alt="hr" />
+  <hr />
 
-  <ul>
+  <img id="whats-this" src="/images/whatsThis.png" alt="upload" />
+  <div class="imprint-square upload-box">
+    <div class="column-desc">
+      <img src="/images/hotcatzDesc.png" alt="whatsThis" />
+    </div>
+    <div class="column-upload-preview">
+      <img class="upload-preview-box" src="/images/previewBox.png" alt="uploadBox" />
+    </div>
+    <div class="column-upload-buttons">
+      {{input class="input" value=name placeholder="Your cat's name"}}
+      <div class="button-box">
+        <button class="button" style="background-color:#AAA;">choose file...</button>
+      </div>
+      <div class="button-box">
+        <button class="button" style="background-color:#FF7000;">Upload!</button>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <img id="leaderboard-logo"src="/images/leaderboard.png" alt="leaderboard" />
+  <div class="leaderboard-cats imprint-square">
     {{#each model as |cat|}}
       {{computeRank}}
       <div class="cat-box" id='{{cat.rank}}'>
-        <h3>{{cat.name}}</h3>
-        <p>
-          Rank: {{cat.rank}}<br />
-          Votes: {{cat.votes}}<br />
-          <img {{action 'addVote' cat}} src='{{cat.imageUrl}}' alt='display error' class='image-icon' />
-        </p>
-        <div class="vote-button">
-          Vote for {{cat.name}}:
-          <button {{action 'removeVote' cat}}>-</button>
-          <button {{action 'addVote' cat}}>+</button>
+        <div class="tooltip">
+          <img {{action 'addVote' cat}} class="image-icon" src='{{cat.imageUrl}}' alt="display error"/>
+          <span class="tooltiptext">
+            <span style="font-size:1.3em;text-transform:uppercase;"><b>{{cat.name}}</b></span>
+            <span class="pull-right" style="font-size:0.8em;margin-top:5px;margin-right:5px;color:gray;">{{cat.votes}} votes</span>
+          </span>
         </div>
+        <p id="rank-stamp">
+          #{{cat.rank}}
+        </p>
       </div>
     {{/each}}
-  </ul>
+  </div>
   <div id="footer-gray">
     <img class="pull-right" style="margin-top:8px" src="/images/hotcatzbottom.png" alt="flame+logo" />
     <img class="pull-left" style="margin-top:20px" src="/images/copyright.png" alt="copyright" />
