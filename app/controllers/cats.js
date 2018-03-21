@@ -27,6 +27,8 @@ export default Controller.extend({
     catz.save();
     return;
   }),
+  sortedCats: computed.sort('model', 'sortBy'),
+  sortBy: ['rank'],
 
   actions: {
     addVote(cat) {

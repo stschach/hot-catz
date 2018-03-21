@@ -1,9 +1,16 @@
+<!-- Header Box -->
 <div class="align-center">
   <img src="/images/flameOrange.png" alt="flame" />
-  <img id="logo-lift" src="/images/HOTCATZ.png" alt="logo" />
+  <img id="header-logo-lift" src="/images/HOTCATZ.png" alt="logo" />
   <img id="header-desc" src="/images/headerDesc.png" alt="header desc" />
   <hr />
 
+<!-- Matchup Box -->
+  <div class="matchup-box">
+
+  </div>
+
+<!-- What's This? Box -->
   <img id="whats-this" src="/images/whatsThis.png" alt="upload" />
   <div class="imprint-square upload-box">
     <div class="column-desc">
@@ -23,16 +30,21 @@
     </div>
   </div>
   <hr />
+
+<!-- Leaderboard Box -->
   <img id="leaderboard-logo"src="/images/leaderboard.png" alt="leaderboard" />
   <div class="leaderboard-cats imprint-square">
-    {{#each model as |cat|}}
+    {{#each sortedCats as |cat|}}
       {{computeRank}}
       <div class="cat-box" id='{{cat.rank}}'>
-        <div class="tooltip">
-          <img {{action 'addVote' cat}} class="image-icon" src='{{cat.imageUrl}}' alt="display error"/>
-          <span class="tooltiptext">
-            <span style="font-size:1.3em;text-transform:uppercase;"><b>{{cat.name}}</b></span>
-            <span class="pull-right" style="font-size:0.8em;margin-top:5px;margin-right:5px;color:gray;">{{cat.votes}} votes</span>
+        <div class="hover-info">
+          <img {{action 'addVote' cat}} class="image-icon" src='{{cat.imageUrl}}' alt="cat" />
+          <div class="vote-overlay" {{action 'addVote' cat}}>
+            vote
+          </div>
+          <span class="hover-text">
+            <span class="pull-left" style="font-size:1.3em;text-transform:uppercase;position:relative;margin-left:5px;"><b>{{cat.name}}</b></span>
+            <span class="pull-right"style="font-size:0.8em;margin-top:5px;margin-right:5px;color:gray;">{{cat.votes}} votes</span>
           </span>
         </div>
         <p id="rank-stamp">
@@ -41,6 +53,8 @@
       </div>
     {{/each}}
   </div>
+
+<!-- Footer Box -->
   <div id="footer-gray">
     <img class="pull-right" style="margin-top:8px" src="/images/hotcatzbottom.png" alt="flame+logo" />
     <img class="pull-left" style="margin-top:20px" src="/images/copyright.png" alt="copyright" />
