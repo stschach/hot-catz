@@ -1,5 +1,5 @@
 <!-- Header Box -->
-<div class="align-center">
+<div class="align-content">
   <img src="/images/flameOrange.png" alt="flame" />
   <img id="header-logo-lift" src="/images/HOTCATZ.png" alt="logo" />
   <img id="header-desc" src="/images/headerDesc.png" alt="header desc" />
@@ -33,12 +33,12 @@
 
 <!-- Leaderboard Box -->
   <img id="leaderboard-logo"src="/images/leaderboard.png" alt="leaderboard" />
-  <div class="leaderboard-cats imprint-square">
+  <div class="imprint-square" id="leaderboard-box">
     {{#each sortedCats as |cat|}}
       {{computeRank}}
-      <div class="cat-box" id='{{cat.rank}}'>
+      <div class="cat-box" id='rank-{{cat.rank}}'>
         <div class="hover-info">
-          <img {{action 'addVote' cat}} class="image-icon" src='{{cat.imageUrl}}' alt="cat" />
+          <img {{action 'addVote' cat}} class="image-icon" id='rank-{{cat.rank}}' src='{{cat.imageUrl}}' alt="cat" />
           <div class="vote-overlay" {{action 'addVote' cat}}>
             vote
           </div>

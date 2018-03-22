@@ -5,11 +5,10 @@ html {
   background-color: #e9e9e9;
   background-image: url("/images/texture.png");
 }
-.align-center {
+.align-content {
+  width: 600px;
   margin: auto;
-  width: 70%;
-  padding: 10px;
-  margin-bottom: 50px;
+  padding-bottom: 5%;
 }
 .imprint-square {
   border: 1px solid;
@@ -41,9 +40,6 @@ html {
 #header-bar {
   border-top: 1px solid #d5d5d5;
 }
-#whats-this {
-  margin-top: 40px;
-}
 #header-logo-lift {
   margin-bottom: 4px
 }
@@ -56,6 +52,9 @@ html {
 /*
   What's This box ------
 */
+#whats-this {
+  margin-top: 40px;
+}
 .upload-box {
   display: flex;
 }
@@ -72,7 +71,6 @@ html {
 }
 .column-upload-preview {
   flex: 35%;
-  position: relative;
   padding: 20px;
   height: 180px;
   border-left: 1px solid white;
@@ -84,8 +82,7 @@ html {
 .column-upload-buttons {
   flex: 40%;
   padding: 30px;
-  margin-left: -30px;
-  overflow-x: auto;
+  margin-left: -20px;
 }
 .column-upload-buttons .input {
   width: 120px;
@@ -118,11 +115,9 @@ html {
   transition: .25s ease;
 }
 .upload-preview-box {
-  position: relative;
-  top: 0;
-  left: 0;
   width: 170px;
   height: 170px;
+  margin-left: 5px;
   border: 4px solid white;
   border-right-width: 2px;
   border-bottom-width: 2px;
@@ -131,14 +126,25 @@ html {
 .upload-preview-box:hover {
   transition: .25s ease;
   cursor: pointer;
-  top: -5px;
+  margin-top: -5px;
+  margin-bottom: 5px;
+  margin-right: -5px;
+  margin-left: 0;
   width: 180px;
   height: 180px;
-  box-shadow: 0 3px 9px 0 #888888;
+  box-shadow: 0 3px 6px 3px #888888;
 }
 /*
   Leaderboard box ------
 */
+#leaderboard-box {
+  position: relative;
+  margin-bottom: 5%;
+  padding-bottom: 5%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
 #leaderboard-logo {
   margin-top: 30px;
   margin-bottom: 5px;
@@ -147,23 +153,36 @@ html {
   text-align: center;
   margin-top: auto;
 }
-.top-three {
+#rank-1 {
   display: inline-block;
-  width: 140px;
-  height: 140px;
-  margin: 10px;
-  padding: 5px;
+  width: 160px;
+  height: 160px;
 }
-.leaderboard-cats {
-  align-items: center;
-  justify-content: center;
+#rank-1 #rank-stamp {
+  display: none;
+}
+#rank-2 {
+  display: inline-block;
+  width: 160px;
+  height: 160px;
+}
+#rank-2 #rank-stamp {
+  display: none;
+}
+#rank-3 {
+  display: inline-block;
+  width: 160px;
+  height: 160px;
+  margin-right: 18px;
+}
+#rank-3 #rank-stamp {
+  display: none;
 }
 .cat-box {
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   margin: 10px;
-  padding: 5px;
 }
 .image-icon {
   width: 75px;
