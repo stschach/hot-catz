@@ -16,16 +16,24 @@
     <div class="column-desc">
       <img src="/images/hotcatzDesc.png" alt="whatsThis" />
     </div>
-    <div class="column-upload-preview">
-      <img class="upload-preview-box" src="/images/previewBox.png" alt="uploadBox" />
-    </div>
+    {{#if imageIsSelected}}
+      <div class="column-upload-preview">
+        <img id="cat-image" class="cat-preview-box" />
+      </div>
+    {{else}}
+      <div class="column-upload-preview">
+        <img class="upload-preview-box" src="/images/previewBox.png" alt="uploadBox" />
+      </div>
+    {{/if}}
     <div class="column-upload-buttons">
-      {{input class="input" value=name placeholder="Your cat's name"}}
+      {{input class="input" value=catName placeholder="Your cat's name"}}
       <div class="button-box">
-        <button class="button" style="background-color:#AAA;">choose file...</button>
+        <button class="button" style="background-color:#AAA;">
+          {{x-file-input multiple=false name="files" action=(action 'didSelectImage') accept="image/*" alt="choose file..."}}
+        </button>
       </div>
       <div class="button-box">
-        <button class="button" style="background-color:#FF7000;">Upload!</button>
+        <button class="button" style="background-color:#FF7000;" {{action 'newCat'}}>Upload!</button>
       </div>
     </div>
   </div>
@@ -34,8 +42,8 @@
 <!-- Leaderboard Box -->
   <img id="leaderboard-logo"src="/images/leaderboard.png" alt="leaderboard" />
   <div class="imprint-square" id="leaderboard-box">
+    {{computeRank}}
     {{#each sortedCats as |cat|}}
-      {{computeRank}}
       <div class="cat-box" id='rank-{{cat.rank}}'>
         <div class="hover-info">
           <img {{action 'addVote' cat}} class="image-icon" id='rank-{{cat.rank}}' src='{{cat.imageUrl}}' alt="cat" />
