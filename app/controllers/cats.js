@@ -87,7 +87,7 @@ export default Controller.extend({
         let uploadUrl = uploadTask.snapshot.metadata.downloadURLs[0];
         console.log('File available at ', uploadUrl);
         // Create a new cat model record
-        let cat = store.createRecord('cat', { // ERROR: this.get('store') is not a function :(
+        let cat = store.createRecord('cat', {
           name: catName,
           imageUrl: uploadUrl
         });
