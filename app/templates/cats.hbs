@@ -8,10 +8,19 @@
 <!-- Matchup Box -->
   <div class="matchup-box">
     <div class="contestant">
-      <img id="contestant-left" style="width:260px;height:260px;" />
+      <img {{action 'addVoteLeft'}} id="contestant-left" style="width:250px;height:250px;" />
+      <div class="contestant-overlay">
+        Vote for this cat
+      </div>
     </div>
+    <span class="versus">
+      VS
+    </span>
     <div class="contestant">
-      <img id="contestant-right" style="width:260px;height:260px;" />
+      <img {{action 'addVoteRight'}} id="contestant-right" style="width:250px;height:250px;" />
+      <div class="contestant-overlay">
+        Vote for this cat
+      </div>
     </div>
   </div>
 
@@ -51,10 +60,10 @@
     {{#each sortedCats as |cat|}}
       <div class="cat-box" id='rank-{{cat.rank}}'>
         <div class="hover-info">
-          <img {{action 'addVote' cat}} class="image-icon" id='rank-{{cat.rank}}' src='{{cat.imageUrl}}' alt="cat" />
-          <div class="vote-overlay" {{action 'addVote' cat}}>
+          <img class="image-icon" id='rank-{{cat.rank}}' src='{{cat.imageUrl}}' alt="cat" />
+          {{!-- <div class="vote-overlay">
             vote
-          </div>
+          </div> --}}
           <span class="hover-text">
             <span class="pull-left" style="font-size:1.3em;text-transform:uppercase;position:relative;margin-left:5px;"><b>{{cat.name}}</b></span>
             <span class="pull-right"style="font-size:0.8em;margin-top:5px;margin-right:5px;color:gray;">{{cat.votes}} votes</span>

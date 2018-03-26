@@ -52,8 +52,32 @@ html {
 .contestant {
   display: inline-block;
   border: 4px solid white;
-  margin: 10px;
+  margin: 16px;
   box-shadow: 2px 8px 10px 0 #BBBBBB;
+}
+.contestant:hover {
+  cursor: pointer;
+  transition: 1s ease;
+  opacity: 0.8;
+  background-color: #FF7000;
+}
+.contestant-overlay {
+  display: none;
+}
+.contestant:hover .contestant-overlay {
+  transition: 1s ease;
+  display: block;
+  position: absolute;
+  top: 45%;
+  margin-left: 5%;
+  font-family: Arial, sans-serif;
+}
+.matchup-box .versus {
+  position: absolute;
+  top: 25%;
+  margin-left: -18px;
+  font-family: Arial, sans-serif;
+  font-size: 1.5em;
 }
 /*
   What's This box ------
@@ -154,6 +178,7 @@ html {
   position: relative;
   margin-bottom: 5%;
   padding-bottom: 5%;
+  margin-bottom: 10%;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -205,6 +230,7 @@ html {
   box-shadow: 0 1px 3px 0 #888888;
 }
 /* Image overlay */
+/*
 .hover-info:hover .image-icon {
   opacity: 0.5;
   cursor: pointer;
@@ -226,6 +252,7 @@ html {
   text-align: center;
   cursor: pointer;
 }
+*/
 /* Floating name + votes */
 .hover-info {
   position: relative;

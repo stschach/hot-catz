@@ -8,25 +8,62 @@ export default Controller.extend({
   listOfVotes: mapBy('model', 'votes'),
   listOfRanks: mapBy('model', 'rank'),
   totalCatz: alias('model.length'),
+  leftCatId: null,
+  rightCatId: null,
   determineSelected: computed('model.@each.votes', function() {
     let catz = this.get('model');
     let rankList = this.get('listOfRanks');
+    let leftRankExists = false;
+    let leftCatSet = false;
+    let rightRankExists = false;
+    let rightCatSet = false;
     let totalCats = this.get('totalCatz');
     var leftCat = document.getElementById('contestant-left');
     var rightCat = document.getElementById('contestant-right');
     let catDisplayLeft = Math.floor((Math.random() * totalCats) + 1);
     let catDisplayRight = Math.floor((Math.random() * totalCats) + 1);
+    // Eliminate displaying same cat on both sides
     while (catDisplayLeft == catDisplayRight) {
       catDisplayRight = Math.floor((Math.random() * totalCats) + 1);
     }
+    // Eliminate displaying no cat in case there is a tie
+    // function findExistingRank(catRankLeft, catRankRight) {
+    //   for (let i = 0; i < totalCats; i++) {
+    //     if (catRankLeft == rankList[i]) {
+    //       leftRankExists = true;
+    //       return catRankLeft;
+    //     }
+    //     if (catRankRight == rankList[i]) {
+    //       rightRankExists = true;
+    //       return catRankRight;
+    //     }
+    //   }
+    //   catDisplayLeft = rankList[2];
+    //   catDisplayRight = rankList[3];
+    //   return;
+    // }
+    // if (!leftRankExists) { catDisplayLeft = findExistingRank(catDisplayLeft+1); }
+    // console.log('left rank = '+catDisplayLeft);
+    // console.log('right rank = '+catDisplayRight);
+    // Display cats according to their randomly chosen rank
     catz.forEach((cat) => {
-      if (cat.get('rank') == catDisplayLeft) {
+      if (cat.get('rank') == catDisplayLeft) { // pick cat to show on the right
         leftCat.src = cat.get('imageUrl');
+        this.set('leftCatId', cat);
+        leftCatSet = true;
+        // console.log(this.get('leftCatId.name'));
       }
-      if (cat.get('rank') == catDisplayRight) {
+      if (cat.get('rank') == catDisplayRight) { // pick cat to show on the left
         rightCat.src = cat.get('imageUrl');
+        this.set('rightCatId', cat);
+        rightCatSet = true;
+        // console.log(this.get('rightCatId.name'));
       }
     })
+    if (!leftCatSet || !rightCatSet) {
+      alert('Whoops.. something went wrong! Please reload the page.');
+    }
+    return;
   }),
   computeRank: computed('model.@each.votes', function() {
     let catz = this.get('model');
@@ -56,10 +93,19 @@ export default Controller.extend({
   imageIsSelected: false,
 
   actions: {
-    addVote(cat) {
+    addVoteLeft() {
+      let cat = this.get('leftCatId');
+      // console.log('vote added to '+cat.name);
       cat.incrementProperty('votes');
       cat.save();
     },
+    addVoteRight() {
+      let cat = this.get('rightCatId');
+      // console.log('vote added to '+cat.name);
+      cat.incrementProperty('votes');
+      cat.save();
+    },
+    // Admin handler
     removeVote(cat) {
       if(cat.get('votes') > 0) {
         cat.decrementProperty('votes');
