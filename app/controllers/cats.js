@@ -2,10 +2,32 @@ import Controller from '@ember/controller';
 import { mapBy, alias } from '@ember/object/computed';
 import { set } from '@ember/object';
 import { computed } from '@ember/object';
+import DS from 'ember-data';
 
 export default Controller.extend({
   listOfVotes: mapBy('model', 'votes'),
+  listOfRanks: mapBy('model', 'rank'),
   totalCatz: alias('model.length'),
+  determineSelected: computed('model.@each.votes', function() {
+    let catz = this.get('model');
+    let rankList = this.get('listOfRanks');
+    let totalCats = this.get('totalCatz');
+    var leftCat = document.getElementById('contestant-left');
+    var rightCat = document.getElementById('contestant-right');
+    let catDisplayLeft = Math.floor((Math.random() * totalCats) + 1);
+    let catDisplayRight = Math.floor((Math.random() * totalCats) + 1);
+    while (catDisplayLeft == catDisplayRight) {
+      catDisplayRight = Math.floor((Math.random() * totalCats) + 1);
+    }
+    catz.forEach((cat) => {
+      if (cat.get('rank') == catDisplayLeft) {
+        leftCat.src = cat.get('imageUrl');
+      }
+      if (cat.get('rank') == catDisplayRight) {
+        rightCat.src = cat.get('imageUrl');
+      }
+    })
+  }),
   computeRank: computed('model.@each.votes', function() {
     let catz = this.get('model');
     let voteList = this.get('listOfVotes');
@@ -76,9 +98,11 @@ export default Controller.extend({
       const storageRef = this.get('firebaseApp').storage().ref();
       let path = file.name+'.png';
       let uploadTask = storageRef.child(path).put(file, metadata);
+      var uploadButton = document.getElementById('upload-button').firstChild;
       // Begin the upload
       uploadTask.on('state_changed', function(snapshot) { // progress handler
         let percent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+        uploadButton.data = Math.round(percent)+'%';
         console.log(percent+'% complete');
       }, function(error) { // error handler
         alert('Oh no!\nThe upload failed.\n*Make sure your file is less than 2048x2048 in size.*\nCheck the console or please try again.');
@@ -92,6 +116,8 @@ export default Controller.extend({
           imageUrl: uploadUrl
         });
         cat.save();
+        uploadButton.data = 'Success!'; // indicates upload is complete
+        setTimeout(function(){uploadButton.data = 'Upload!';}, 3000); // restores button text after 3 seconds
       });
       this.set('catName', '');
     }

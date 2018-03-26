@@ -7,7 +7,12 @@
 
 <!-- Matchup Box -->
   <div class="matchup-box">
-
+    <div class="contestant">
+      <img id="contestant-left" style="width:260px;height:260px;" />
+    </div>
+    <div class="contestant">
+      <img id="contestant-right" style="width:260px;height:260px;" />
+    </div>
   </div>
 
 <!-- What's This? Box -->
@@ -28,12 +33,12 @@
     <div class="column-upload-buttons">
       {{input class="input" value=catName placeholder="Your cat's name"}}
       <div class="button-box">
-        <button class="button" style="background-color:#AAA;">
+        <button id="select-button" class="button" style="background-color:#AAA;">
           {{x-file-input multiple=false name="files" action=(action 'didSelectImage') accept="image/*" alt="choose file..."}}
         </button>
       </div>
       <div class="button-box">
-        <button class="button" style="background-color:#FF7000;" {{action 'newCat'}}>Upload!</button>
+        <button id="upload-button" class="button" style="background-color:#FF7000;" {{action 'newCat'}}>Upload!</button>
       </div>
     </div>
   </div>
@@ -42,7 +47,7 @@
 <!-- Leaderboard Box -->
   <img id="leaderboard-logo"src="/images/leaderboard.png" alt="leaderboard" />
   <div class="imprint-square" id="leaderboard-box">
-    {{computeRank}}
+    {{computeRank}} {{determineSelected}}
     {{#each sortedCats as |cat|}}
       <div class="cat-box" id='rank-{{cat.rank}}'>
         <div class="hover-info">

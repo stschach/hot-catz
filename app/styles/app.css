@@ -47,7 +47,13 @@ html {
   Matchup box ------
 */
 .matchup-box {
-
+  text-align: center;
+}
+.contestant {
+  display: inline-block;
+  border: 4px solid white;
+  margin: 10px;
+  box-shadow: 2px 8px 10px 0 #BBBBBB;
 }
 /*
   What's This box ------
