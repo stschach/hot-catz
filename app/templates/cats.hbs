@@ -61,11 +61,14 @@
       <div class="cat-box" id='rank-{{cat.rank}}'>
         <div class="hover-info">
           <img class="image-icon" id='rank-{{cat.rank}}' src='{{cat.imageUrl}}' alt="cat" />
+          <img class="gold-medal" src="/images/goldMedal.png" />
+          <img class="silver-medal" src="/images/silverMedal.png" />
+          <img class="bronze-medal" src="/images/bronzeMedal.png" />
           {{!-- <div class="vote-overlay">
             vote
           </div> --}}
           <span class="hover-text">
-            <span class="pull-left" style="font-size:1.3em;text-transform:uppercase;position:relative;margin-left:5px;"><b>{{cat.name}}</b></span>
+            <span class="pull-left" style="font-size:1.2em;text-transform:uppercase;position:relative;margin-left:5px;text-overflow:ellipsis;white-space: nowrap;"><b>{{cat.name}}</b></span>
             <span class="pull-right"style="font-size:0.8em;margin-top:5px;margin-right:5px;color:gray;">{{cat.votes}} votes</span>
           </span>
         </div>
@@ -80,6 +83,7 @@
   <div id="footer-gray">
     <img class="pull-right" style="margin-top:8px" src="/images/hotcatzbottom.png" alt="flame+logo" />
     <img class="pull-left" style="margin-top:20px" src="/images/copyright.png" alt="copyright" />
+    <span style="display:none;"><i>Disclaimer: This work is not to be used in any way for financial purposes and exists solely for the amusement of those who know about it. Every picture used in this work was obtained either from the provided .psd parsed file or Google image searches.</i></span>
   </div>
   <div id="footer-orange-background"></div>
   <div id="footer-orange">
