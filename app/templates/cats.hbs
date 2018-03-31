@@ -5,26 +5,29 @@
   <img id="header-desc" src="/images/headerDesc.png" alt="header desc" />
   <hr />
 
-<!-- Matchup Box -->
-  <div class="matchup-box">
+  <!-- Matchup Box -->
+  <div class="{{if battleHasBegun 'matchup-box' 'hidden-matchup'}}">
     <div class="contestant">
-      <img {{action 'addVoteLeft'}} id="contestant-left" style="width:250px;height:250px;" />
+      <img onclick= {{action (pipe (action 'addVoteLeft') (action 'determineSelected'))}} id="contestant-left" style="width:250px;height:250px;" />
       <div class="contestant-overlay">
         Vote for this cat
       </div>
     </div>
-    <span class="versus">
-      VS
-    </span>
+    <span class="versus">VS</span>
     <div class="contestant">
-      <img {{action 'addVoteRight'}} id="contestant-right" style="width:250px;height:250px;" />
+      <img onclick= {{action (pipe (action 'addVoteRight') (action 'determineSelected'))}} id="contestant-right" style="width:250px;height:250px;" />
       <div class="contestant-overlay">
         Vote for this cat
       </div>
     </div>
   </div>
+  <div class="{{if battleHasBegun 'hidden-button' 'battle-button-container'}}">
+    <button class="battle-button" {{action (pipe (action 'startBattle') (action 'determineSelected'))}}>
+      <img src="/images/smashBrosGo.png" style="width:100px;height:75px;" />
+    </button>
+  </div>
 
-<!-- What's This? Box -->
+  <!-- What's This? Box -->
   <img id="whats-this" src="/images/whatsThis.png" alt="upload" />
   <div class="imprint-square upload-box">
     <div class="column-desc">
@@ -36,7 +39,9 @@
       </div>
     {{else}}
       <div class="column-upload-preview">
-        <img class="upload-preview-box" src="/images/previewBox.png" alt="uploadBox" />
+        {{#x-file-input multiple=false name="files" action=(action 'didSelectImage') accept="image/*" }}
+          <img class="upload-preview-box" src="/images/previewBox.png" alt="uploadBox" />
+        {{/x-file-input}}
       </div>
     {{/if}}
     <div class="column-upload-buttons">
@@ -53,23 +58,20 @@
   </div>
   <hr />
 
-<!-- Leaderboard Box -->
-  <img id="leaderboard-logo"src="/images/leaderboard.png" alt="leaderboard" />
+  <!-- Leaderboard Box -->
+  <img id="leaderboard-logo" src="/images/leaderboard.png" alt="leaderboard" />
   <div class="imprint-square" id="leaderboard-box">
-    {{computeRank}} {{determineSelected}}
+    {{computeRank}}
     {{#each sortedCats as |cat|}}
       <div class="cat-box" id='rank-{{cat.rank}}'>
         <div class="hover-info">
           <img class="image-icon" id='rank-{{cat.rank}}' src='{{cat.imageUrl}}' alt="cat" />
-          <img class="gold-medal" src="/images/goldMedal.png" />
-          <img class="silver-medal" src="/images/silverMedal.png" />
-          <img class="bronze-medal" src="/images/bronzeMedal.png" />
-          {{!-- <div class="vote-overlay">
-            vote
-          </div> --}}
+          <img id="gold-medal" src="/images/goldMedal.png" />
+          <img id="silver-medal" src="/images/silverMedal.png" />
+          <img id="bronze-medal" src="/images/bronzeMedal.png" />
           <span class="hover-text">
             <span class="pull-left" style="font-size:1.2em;text-transform:uppercase;position:relative;margin-left:5px;text-overflow:ellipsis;white-space: nowrap;"><b>{{cat.name}}</b></span>
-            <span class="pull-right"style="font-size:0.8em;margin-top:5px;margin-right:5px;color:gray;">{{cat.votes}} votes</span>
+          <span class="pull-right" style="font-size:0.8em;margin-top:5px;margin-right:5px;color:gray;">{{cat.votes}} votes</span>
           </span>
         </div>
         <p id="rank-stamp">
@@ -79,14 +81,14 @@
     {{/each}}
   </div>
 
-<!-- Footer Box -->
+  <!-- Footer Box -->
   <div id="footer-gray">
     <img class="pull-right" style="margin-top:8px" src="/images/hotcatzbottom.png" alt="flame+logo" />
     <img class="pull-left" style="margin-top:20px" src="/images/copyright.png" alt="copyright" />
-    <span style="display:none;"><i>Disclaimer: This work is not to be used in any way for financial purposes and exists solely for the amusement of those who know about it. Every picture used in this work was obtained either from the provided .psd parsed file or Google image searches.</i></span>
+    <span style="display:none;">
+      Disclaimer: This work is not to be used in any way for financial purposes and exists solely for the amusement of those who know about it. Every picture used in this work was obtained either from the provided .psd parsed file or Google image searches. Any semblance borne to fictional work is entirely intentional.
+    </span>
   </div>
   <div id="footer-orange-background"></div>
-  <div id="footer-orange">
-
-  </div>
+  <div id="footer-orange"></div>
 </div>
