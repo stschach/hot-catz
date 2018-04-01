@@ -9,16 +9,12 @@
   <div class="{{if battleHasBegun 'matchup-box' 'hidden-matchup'}}">
     <div class="contestant">
       <img onclick= {{action (pipe (action 'addVoteLeft') (action 'determineSelected'))}} id="contestant-left" style="width:250px;height:250px;" />
-      <div class="contestant-overlay">
-        Vote for this cat
-      </div>
+      <span class="contestant-overlay" id="vote-left-cat">(˚˘˚)/</span>
     </div>
     <span class="versus">VS</span>
     <div class="contestant">
       <img onclick= {{action (pipe (action 'addVoteRight') (action 'determineSelected'))}} id="contestant-right" style="width:250px;height:250px;" />
-      <div class="contestant-overlay">
-        Vote for this cat
-      </div>
+      <span class="contestant-overlay" id="vote-right-cat">¯\_{˚…∆…˚}_/¯</span>
     </div>
   </div>
   <div class="{{if battleHasBegun 'hidden-button' 'battle-button-container'}}">

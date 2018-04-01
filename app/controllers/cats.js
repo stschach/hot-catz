@@ -72,10 +72,12 @@ export default Controller.extend({
       let totalCats = this.get('totalCatz');
       var leftCat = document.getElementById('contestant-left');
       var rightCat = document.getElementById('contestant-right');
+      var leftCatCampaign = document.getElementById('vote-left-cat').firstChild;
+      var rightCatCampaign = document.getElementById('vote-right-cat').firstChild;
       let catDisplayLeft = Math.floor((Math.random() * totalCats) + 1);
       let catDisplayRight = Math.floor((Math.random() * totalCats) + 1);
 
-      // Eliminate displaying same cat on both sides
+      // Reduce likelihood of displaying same cat on both sides
       while (catDisplayLeft == catDisplayRight) {
         catDisplayRight = Math.floor((Math.random() * totalCats) + 1);
       }
@@ -132,11 +134,13 @@ export default Controller.extend({
         if (cat.get('rank') == catDisplayLeft) { // find cat to show on the left
           leftCat.src = cat.get('imageUrl');
           this.set('leftCatId', cat);
+          leftCatCampaign.data = cat.get('name');
           leftCatSet = true;
           catDisplayLeft = null;
         } else if (cat.get('rank') == catDisplayRight) { // find cat to show on the right
           rightCat.src = cat.get('imageUrl');
           this.set('rightCatId', cat);
+          rightCatCampaign.data = cat.get('name');
           rightCatSet = true;
           catDisplayRight = null;
         }
