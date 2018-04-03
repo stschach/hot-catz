@@ -1,11 +1,12 @@
 # hot-catz
 
 HotCatz is a web app challenge developed as a learning experience, to teach myself the basics of web development. I pursued Javascript, the Ember framework, and a light back-end with [Firebase](https://firebase.google.com/).
+
 This is a simple app that prompts users to vote on whichever cat suits their fancy, shown in the matchup box. The app also allows users to upload and name their own cats, and give others the chance to vote on them. A leaderboard of current results is shown at the bottom.
 
 * [Endpoint](http://hot-catz-stschach.s3-website-us-east-1.amazonaws.com)
 
-###Resources
+### Resources
 
 * Every addon's README.md
 * [Emberjs API](https://emberjs.com/api/ember/release)
@@ -72,13 +73,13 @@ This app is ready to deploy to an s3 bucket with [AWS CLI](https://docs.aws.amaz
                 "s3:PutObject",
                 "s3:PutObjectAcl"
             ],
-            "Resource": "arn:aws:s3:::hot-catz-stschach/*"
+            "Resource": "arn:aws:s3:::your-bucket-name/*"
         }
     ]
 }
 ```
 
-* Modify /config/deploy.js to:
+* Modify /config/deploy.js to include your bucket name and region:
 
 ```javascript
 /*...*/
@@ -87,14 +88,14 @@ This app is ready to deploy to an s3 bucket with [AWS CLI](https://docs.aws.amaz
     accessKeyId: process.env["AWS_ACCESS_KEY_ID"],
     secretAccessKey: process.env["AWS_SECRET_ACCESS_KEY"],
     bucket: "your-bucket-name",
-    region: "us-east-1", // may need to change region
+    region: "your-region",
     allowOverwrite: true
 },
 's3': {
     accessKeyId: process.env["AWS_ACCESS_KEY_ID"],
     secretAccessKey: process.env["AWS_SECRET_ACCESS_KEY"],
     bucket: "your-bucket-name",
-    region: "us-east-1" // may need to change region
+    region: "your-region"
 }
 
 /*...*/
